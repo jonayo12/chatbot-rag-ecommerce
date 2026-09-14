@@ -2,6 +2,9 @@
 
 Chatbot de atención al cliente construido con RAG (Retrieval Augmented Generation) que responde preguntas usando los documentos propios de la empresa, sin inventar información.
 
+## 🌐 Demo en vivo
+👉 [Probar el chatbot](https://chatbot-rag-ecommerce-zfzs5xqsawlcba2gqyumso.streamlit.app)
+
 ## 🎯 Problema que resuelve
 
 Las tiendas online reciben cientos de preguntas repetitivas cada día sobre precios, disponibilidad y políticas. Este chatbot las responde automáticamente 24/7, reduciendo la carga del equipo de atención al cliente.
