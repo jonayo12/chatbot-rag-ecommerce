@@ -1,5 +1,6 @@
 import streamlit as st
 from rag import cargar_documentos, crear_vectorstore, crear_cadena_rag
+from langchain_core.messages import HumanMessage, AIMessage
 
 st.set_page_config(
     page_title="Chatbot TechStore",
@@ -23,6 +24,9 @@ if "mensajes" not in st.session_state:
         {"role": "assistant", "content": "¡Hola! Soy el asistente de TechStore. ¿En qué puedo ayudarte?"}
     ]
 
+if "historial" not in st.session_state:
+    st.session_state.historial = []
+
 for mensaje in st.session_state.mensajes:
     with st.chat_message(mensaje["role"]):
         st.write(mensaje["content"])
@@ -34,7 +38,12 @@ if pregunta := st.chat_input("Escribe tu pregunta..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Pensando..."):
-            respuesta = cadena.invoke(pregunta)
+            respuesta = cadena.invoke({
+                "question": pregunta,
+                "historial": st.session_state.historial
+            })
             st.write(respuesta)
 
+    st.session_state.historial.append(HumanMessage(content=pregunta))
+    st.session_state.historial.append(AIMessage(content=respuesta))
     st.session_state.mensajes.append({"role": "assistant", "content": respuesta})
