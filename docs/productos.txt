@@ -1,0 +1,16 @@
+Tienda TechStore - Catálogo de productos
+
+Portátil ProMax 15
+Precio: 1.299€
+Procesador: Intel Core i7
+RAM: 16GB
+Almacenamiento: 512GB SSD
+Garantía: 2 años
+Disponibilidad: En stock
+
+Auriculares SoundPro
+Precio: 149€
+Tipo: Inalámbricos con cancelación de ruido
+Batería: 30 horas
+Garantía: 1 año
+Disponibilidad: En stock
