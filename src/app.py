@@ -1,6 +1,7 @@
 import streamlit as st
 from rag import cargar_documentos, crear_vectorstore, crear_cadena_rag
 from langchain_core.messages import HumanMessage, AIMessage
+import os
 
 st.set_page_config(
     page_title="Chatbot TechStore",
@@ -12,7 +13,9 @@ st.caption("Pregúntame sobre productos, precios y políticas de la tienda.")
 
 @st.cache_resource
 def inicializar_chatbot():
-    documentos = cargar_documentos("../docs")
+    ruta_base = os.path.dirname(os.path.abspath(__file__))
+    ruta_docs = os.path.join(ruta_base, "..", "docs")
+    documentos = cargar_documentos(ruta_docs)
     vectorstore = crear_vectorstore(documentos)
     cadena = crear_cadena_rag(vectorstore)
     return cadena
